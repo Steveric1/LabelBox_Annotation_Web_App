@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Annotation Screen</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Image Annotation Tool</h1>
+  </header>
+
+  <main>
+    <div class="image-container">
+      <h2>Annotate Image: {% if image %}{{ image.name }}{% else %}Image Not Found{% endif %}</h2>
+      <div class="canvas-wrapper">
+        {% if image %}
+        <img id="image" src="{{ image.image.url }}" alt="{{ image.name }}">
+        <canvas id="canvas"></canvas>
+        {% else %}
+        <p>No image found.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <button id="submit-btn">Save Annotation</button>
+
+    <form id="annotation-form" method="POST" style="display: none;">
+      {% csrf_token %}
+      <input type="hidden" name="image_id" value="{% if image %}{{ image.id }}{% endif %}">
+      <input type="hidden" name="x">
+      <input type="hidden" name="y">
+      <input type="hidden" name="width">
+      <input type="hidden" name="height">
+    </form>
+  </main>
+
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
