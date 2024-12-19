@@ -81,7 +81,8 @@ submitBtn.addEventListener("click", () => {
     .then((data) => {
         console.log("Server response:", data);
         if (data.annotation_id) {
-            alert(`${data.message} (ID: ${data.annotation_id})`);
+            alert(`${data.message}  Annotated Data: (ID: ${data.annotation_id} 
+                X: ${data.x} Y: ${data.y} Width: ${data.width} Height: ${data.height})`);
         } else {
             alert(data.message);
         }

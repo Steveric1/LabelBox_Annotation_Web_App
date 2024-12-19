@@ -37,7 +37,7 @@ def save_annotation(request):
         try:
             image = get_object_or_404(Image, id=image_id)
             annotation = Annotation.objects.create(image=image, x=x, y=y, width=width, height=height)
-            return JsonResponse({"message": "Annotation saved successfully!", "annotation_id": annotation.id})
+            return JsonResponse({"message": "Annotation saved successfully!", "annotation_id": annotation.id, "x": x, "y": y, "width": width, "height": height})
         except Exception as e:
             return JsonResponse({"message": f"Error: {e}"}, status=500)
 
