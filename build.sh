@@ -4,6 +4,7 @@
 set -o errexit
 
 # Step 1: Install requirements.txt
+pip install --upgrade pip
 pip install -r requirements.txt
 
 # Step 2: Collect static files and run migrations
