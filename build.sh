@@ -11,7 +11,6 @@ pip install -r requirements.txt
 python manage.py collectstatic --no-input
 
 # Step 3: migrate database
-python manage.py makemigrations
 python manage.py migrate
 
 # Step 4: Create a superuser
